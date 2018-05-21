@@ -1,0 +1,11 @@
+{
+  "require-dev": {
+    "phpunit/phpunit": "5.7.21"
+  },
+  "autoload": {
+    "psr-4": {
+      "TinyMVC\\":"tinymvc",
+      "App\\":"app/"
+    }
+  }  
+}
