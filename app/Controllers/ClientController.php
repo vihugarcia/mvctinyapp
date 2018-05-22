@@ -3,7 +3,6 @@ namespace App\Controllers;
 
 use TinyMVC\core\Controller;
 use TinyMVC\helpers\FileUploader;
-use TinyMVC\helpers\GridHelper;
 use TinyMVC\helpers\DataTable;
 use TinyMVC\core\DI;
 
@@ -20,14 +19,11 @@ class ClientController extends Controller
         parent::__construct();
     }
 
-    public function index($page = 1)
+    public function index()
     {
-        //$result = $this->client->all(['firstname', 'lastname', 'email', 'id']);
+        $dataTable = new DataTable(['firstname', 'lastname', 'email', 'id'], 'id', 'client');
 
-        //$gridHelper = new GridHelper(['firstname', 'lastname', 'email', 'id'], 'id', 'client', $page, $this->client);
-        $dataTable = new DataTable(['firstname', 'lastname', 'email', 'id'], 'id', 'client', $page, $this->client);
         $this->view->setAction("index");
-        //$this->view->set('clients', $result);
         $this->view->set('grid', $dataTable);
         return $this->view->render();
     }
