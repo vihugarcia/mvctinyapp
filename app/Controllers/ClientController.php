@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use TinyMVC\core\Controller;
+use TinyMVC\database\MySQLDB;
 use TinyMVC\helpers\FileUploader;
 use TinyMVC\helpers\DataTable;
 use TinyMVC\core\DI;
@@ -92,7 +93,7 @@ class ClientController extends Controller
 
         $queryRec .= " ORDER BY ". $columns[$params['order'][0]['column']]." ".$params['order'][0]['dir']." LIMIT ".$params['start']." ,".$params['length']." ";
 
-        $this->db = DI::getInstanceOf('TinyMVC\database\MySQLDB', [CONFIG]);
+        $this->db = DI::getInstanceOf(MySQLDB::class, [CONFIG]);
 
         $clients = $this->db->query($queryRec);
 

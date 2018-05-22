@@ -2,6 +2,7 @@
 namespace TinyMVC\core;
 
 use TinyMVC\core\Exceptions\ResourceNotFoundException;
+use TinyMVC\database\MySQLDB;
 
 class App
 {
@@ -27,10 +28,10 @@ class App
             $controllerBaseName = end($controllerBaseName);
             $controllerBaseName = strtolower( str_replace('Controller','', $controllerBaseName) );
 
-            $db = DI::getInstanceOf('TinyMVC\database\MySQLDB', [CONFIG]);
+            $db = DI::getInstanceOf(MySQLDB::class, [CONFIG]);
 
             // Map the classes that will be injected
-            DI::mapClass('view', 'TinyMVC\core\View', [$controllerBaseName]);
+            DI::mapClass('view', View::class, [$controllerBaseName]);
             DI::mapClass($controllerBaseName, 'App\Models\\' . ucfirst($controllerBaseName), [$controllerBaseName . "s", $db]);
 
             // Use the Dependency Injection. Avoid 'new'.
