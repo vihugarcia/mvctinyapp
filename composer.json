@@ -6,6 +6,10 @@
     "psr-4": {
       "TinyMVC\\":"tinymvc",
       "App\\":"app/"
-    }
-  }  
+    },
+    "classmap": ["Commands"]
+  },
+  "require": {
+    "symfony/console": "^4.0"
+  }
 }
