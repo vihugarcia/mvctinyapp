@@ -1,8 +1,6 @@
 <?php
 namespace TinyMVC\core;
 
-use TinyMVC\database\db;
-
 class Model
 {
     protected $table;
